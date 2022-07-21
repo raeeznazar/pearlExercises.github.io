@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="card" style="width: 18rem">
+      <h3 class="text-center mt-3">ADD PRODUCTS</h3>
+      <div class="card-body text-center">
+        <form [formGroup]="formPage" (ngSubmit)="submit()">
+          <label class="form-label float-start">Add Products</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="product"
+            name="product"
+            placeholder="Add Product"
+          />
+          <div
+            style="color: red"
+            *ngIf="
+              this.formPage.get('product')?.touched &&
+              this.formPage.get('product')?.errors
+            "
+          >
+            Invalid product name
+          </div>
+          <label class="form-label float-start mt-2">Price</label>
+          <input
+            type="text"
+            class="form-control mt-3"
+            formControlName="price"
+            name="price"
+            placeholder="Add price"
+          />
+          <div
+            style="color: red"
+            *ngIf="
+              this.formPage.get('price')?.touched &&
+              this.formPage.get('price')?.errors
+            "
+          >
+            Invalid price details
+          </div>
+          <label class="form-label float-start mt-2">Quantity</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="qty"
+            name="qty"
+            placeholder="qty"
+          />
+          <div
+            style="color: red"
+            *ngIf="
+              this.formPage.get('qty')?.touched &&
+              this.formPage.get('qty')?.errors
+            "
+          >
+            Invalid Quantity details
+          </div>
+          <button class="btn btn-primary mt-3">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
