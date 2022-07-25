@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-dark bg-dark text-center justify-content-center">
+    <h2 class="text-warning style-nav-heading">TASK APP</h2>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6 mt-5">
+        <h3 class="text-center"><u>Add your Task here</u></h3>
+
+        <form (ngSubmit)="submit()" ngNativeValidate>
+          <div class="d-flex justify-content-center mt-4">
+            <div class="card" style="width: 25rem">
+              <div class="card-body bg-primary">
+                <div>
+                  <label class="form-label text-light">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    class="form-control"
+                    [(ngModel)]="subject"
+                    name="subject"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label class="form-label mt-2 text-light">time</label>
+                  <input
+                    type="time"
+                    id="time"
+                    class="form-control"
+                    [(ngModel)]="time"
+                    name="time"
+                    required
+                  />
+                </div>
+                <div class="mt-2">
+                  <label class="form-label mt-2 text-light">Date</label>
+                  <dp-date-picker
+                    theme="dp-material"
+                    [config]="datePickerConfig"
+                    required="true"
+                    style="width: 100%"
+                    [(ngModel)]="date"
+                    name="date"
+                    required
+                  >
+                  </dp-date-picker>
+                </div>
+
+                <div class="mt-3">
+                  <div class="form-floating">
+                    <textarea
+                      class="form-control"
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea2"
+                      style="height: 100px"
+                      [(ngModel)]="comments"
+                      name="comments"
+                      required
+                    ></textarea>
+                    <label for="floatingTextarea2">Comments</label>
+                  </div>
+                </div>
+                <div class="d-grid gap-2 mt-3">
+                  <button class="btn btn-warning" type="submit">SUBMIT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-6">
+        <app-view-page
+          [detailsFromMainPage]="taskDetails"
+          (editDetailsPass)="editOut($event)"
+        ></app-view-page>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [details-From-mainPage]="taskDetails" -->

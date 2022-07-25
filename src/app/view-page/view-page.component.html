@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <table class="table mt-4 table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Task Subject</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Comments</th>
+          <th scope="col" colspan="6" class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tr class="text-center" *ngIf="availableTasks.length == 0">
+        <td colspan="6">No data available</td>
+      </tr>
+      <tbody>
+        <tr *ngFor="let t of availableTasks; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td>{{ t.subject }}</td>
+          <td>{{ t.date | date: "shortDate" }}</td>
+          <td>{{ t.time }}</td>
+          <td>{{ t.comments }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteBtn(t.id)">
+              Delete
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-warning" (click)="editBtn(t)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
